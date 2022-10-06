@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  nginx_app:
+    image: nginx:latest
+    depends_on:
+      - flask_app
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - 8080:80
+
+  flask_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    expose:
+      - 5000
+
+  cisco:
+    image: "internap/fake-switches:latest"
+    environment:
+      - SWITCH_MODEL=cisco_2960_48TT_L

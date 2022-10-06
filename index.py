@@ -2,10 +2,6 @@ from flask import Flask
 
 app = Flask(__name__)
 
-# to connect redis 
-# use host "redis_app"
-# use port "6379"
-# use password "add_password_here"
 
 @app.route('/')
 def hello():
